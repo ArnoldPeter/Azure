@@ -1,0 +1,134 @@
+{
+    "id": "/subscriptions/14b5605c-c72a-4f30-83b3-c8cd6668c0ba/resourceGroups/Lab1/providers/Microsoft.Resources/deployments/Microsoft.Web-WebApp-Portal-3e5b772d-8ce1",
+    "name": "Microsoft.Web-WebApp-Portal-3e5b772d-8ce1",
+    "type": "Microsoft.Resources/deployments",
+    "tags": {
+      "primaryResourceId": "/subscriptions/14b5605c-c72a-4f30-83b3-c8cd6668c0ba/resourcegroups/Lab1/providers/Microsoft.Web/sites/fhwnLab1",
+      "marketplaceItemId": "Microsoft.WebSite"
+    },
+    "properties": {
+      "templateHash": "10692516730803609579",
+      "parameters": {
+        "subscriptionId": {
+          "type": "String",
+          "value": "14b5605c-c72a-4f30-83b3-c8cd6668c0ba"
+        },
+        "name": {
+          "type": "String",
+          "value": "fhwnLab1"
+        },
+        "location": {
+          "type": "String",
+          "value": "North Europe"
+        },
+        "hostingPlanName": {
+          "type": "String",
+          "value": "ASP-Lab1-9db7"
+        },
+        "serverFarmResourceGroup": {
+          "type": "String",
+          "value": "Lab1"
+        },
+        "alwaysOn": {
+          "type": "Bool",
+          "value": false
+        },
+        "sku": {
+          "type": "String",
+          "value": "Free"
+        },
+        "skuCode": {
+          "type": "String",
+          "value": "F1"
+        },
+        "workerSize": {
+          "type": "String",
+          "value": "0"
+        },
+        "workerSizeId": {
+          "type": "String",
+          "value": "0"
+        },
+        "numberOfWorkers": {
+          "type": "String",
+          "value": "1"
+        },
+        "currentStack": {
+          "type": "String",
+          "value": "dotnetcore"
+        },
+        "phpVersion": {
+          "type": "String",
+          "value": "OFF"
+        },
+        "errorLink": {
+          "type": "String",
+          "value": "https://fhwnLab1.scm.azurewebsites.net/detectors?type=tools&name=eventviewer"
+        }
+      },
+      "mode": "Incremental",
+      "debugSetting": {
+        "detailLevel": "None"
+      },
+      "provisioningState": "Running",
+      "timestamp": "2020-10-09T09:51:45.6475302Z",
+      "duration": "PT1.3462762S",
+      "correlationId": "49660e92-6958-44ab-afbc-556a904eaed7",
+      "providers": [
+        {
+          "namespace": "Microsoft.Web",
+          "resourceTypes": [
+            {
+              "resourceType": "sites",
+              "locations": [
+                "northeurope"
+              ]
+            },
+            {
+              "resourceType": "serverfarms",
+              "locations": [
+                "northeurope"
+              ]
+            }
+          ]
+        },
+        {
+          "namespace": "microsoft.insights",
+          "resourceTypes": [
+            {
+              "resourceType": "components",
+              "locations": [
+                "northeurope"
+              ]
+            }
+          ]
+        }
+      ],
+      "dependencies": [
+        {
+          "dependsOn": [
+            {
+              "id": "/subscriptions/14b5605c-c72a-4f30-83b3-c8cd6668c0ba/resourceGroups/Lab1/providers/microsoft.insights/components/fhwnLab1",
+              "resourceType": "microsoft.insights/components",
+              "resourceName": "fhwnLab1"
+            },
+            {
+              "id": "/subscriptions/14b5605c-c72a-4f30-83b3-c8cd6668c0ba/resourceGroups/Lab1/providers/Microsoft.Web/serverfarms/ASP-Lab1-9db7",
+              "resourceType": "Microsoft.Web/serverfarms",
+              "resourceName": "ASP-Lab1-9db7"
+            },
+            {
+              "id": "/subscriptions/14b5605c-c72a-4f30-83b3-c8cd6668c0ba/resourceGroups/Lab1/providers/microsoft.insights/components/fhwnLab1",
+              "resourceType": "microsoft.insights/components",
+              "resourceName": "fhwnLab1",
+              "apiVersion": "2015-05-01"
+            }
+          ],
+          "id": "/subscriptions/14b5605c-c72a-4f30-83b3-c8cd6668c0ba/resourceGroups/Lab1/providers/Microsoft.Web/sites/fhwnLab1",
+          "resourceType": "Microsoft.Web/sites",
+          "resourceName": "fhwnLab1"
+        }
+      ],
+      "validationLevel": "Template"
+    }
+  }
