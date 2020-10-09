@@ -1,21 +1,28 @@
 {
-    "id": "/subscriptions/14b5605c-c72a-4f30-83b3-c8cd6668c0ba/resourceGroups/Lab1/providers/Microsoft.Resources/deployments/Microsoft.Web-WebApp-Portal-3e5b772d-8ce1",
-    "name": "Microsoft.Web-WebApp-Portal-3e5b772d-8ce1",
+    "id": "/subscriptions/14b5605c-c72a-4f30-83b3-c8cd6668c0ba/resourceGroups/Lab1/providers/Microsoft.Resources/deployments/Microsoft.Web-WebApp-Portal-d2cee25e-b789",
+    "name": "Microsoft.Web-WebApp-Portal-d2cee25e-b789",
     "type": "Microsoft.Resources/deployments",
     "tags": {
-      "primaryResourceId": "/subscriptions/14b5605c-c72a-4f30-83b3-c8cd6668c0ba/resourcegroups/Lab1/providers/Microsoft.Web/sites/fhwnLab1",
+      "primaryResourceId": "/subscriptions/14b5605c-c72a-4f30-83b3-c8cd6668c0ba/resourcegroups/Lab1/providers/Microsoft.Web/sites/fhwnMyWebApp",
       "marketplaceItemId": "Microsoft.WebSite"
     },
     "properties": {
-      "templateHash": "10692516730803609579",
+      "templateHash": "4883191733679320624",
       "parameters": {
+        "<parameter-name>" : {
+            "type" : "<type-of-parameter-value>",
+            "defaultValue": "<default-value-of-parameter>",
+            "allowedValues": [ "<array-of-allowed-values>" ],
+            "metadata": {
+              "description": "<description-of-the parameter>"
+            }},
         "subscriptionId": {
           "type": "String",
           "value": "14b5605c-c72a-4f30-83b3-c8cd6668c0ba"
         },
         "name": {
           "type": "String",
-          "value": "fhwnLab1"
+          "value": "fhwnMyWebApp"
         },
         "location": {
           "type": "String",
@@ -23,7 +30,7 @@
         },
         "hostingPlanName": {
           "type": "String",
-          "value": "ASP-Lab1-9db7"
+          "value": "ASP-Lab1-851b"
         },
         "serverFarmResourceGroup": {
           "type": "String",
@@ -53,17 +60,9 @@
           "type": "String",
           "value": "1"
         },
-        "currentStack": {
+        "linuxFxVersion": {
           "type": "String",
-          "value": "dotnetcore"
-        },
-        "phpVersion": {
-          "type": "String",
-          "value": "OFF"
-        },
-        "errorLink": {
-          "type": "String",
-          "value": "https://fhwnLab1.scm.azurewebsites.net/detectors?type=tools&name=eventviewer"
+          "value": "NODE|12-lts"
         }
       },
       "mode": "Incremental",
@@ -71,9 +70,9 @@
         "detailLevel": "None"
       },
       "provisioningState": "Running",
-      "timestamp": "2020-10-09T09:51:45.6475302Z",
-      "duration": "PT1.3462762S",
-      "correlationId": "49660e92-6958-44ab-afbc-556a904eaed7",
+      "timestamp": "2020-10-09T09:59:14.3762681Z",
+      "duration": "PT0.8150027S",
+      "correlationId": "7db4608b-a444-407c-81bb-24d5d73ec2be",
       "providers": [
         {
           "namespace": "Microsoft.Web",
@@ -91,42 +90,20 @@
               ]
             }
           ]
-        },
-        {
-          "namespace": "microsoft.insights",
-          "resourceTypes": [
-            {
-              "resourceType": "components",
-              "locations": [
-                "northeurope"
-              ]
-            }
-          ]
         }
       ],
       "dependencies": [
         {
           "dependsOn": [
             {
-              "id": "/subscriptions/14b5605c-c72a-4f30-83b3-c8cd6668c0ba/resourceGroups/Lab1/providers/microsoft.insights/components/fhwnLab1",
-              "resourceType": "microsoft.insights/components",
-              "resourceName": "fhwnLab1"
-            },
-            {
-              "id": "/subscriptions/14b5605c-c72a-4f30-83b3-c8cd6668c0ba/resourceGroups/Lab1/providers/Microsoft.Web/serverfarms/ASP-Lab1-9db7",
+              "id": "/subscriptions/14b5605c-c72a-4f30-83b3-c8cd6668c0ba/resourceGroups/Lab1/providers/Microsoft.Web/serverfarms/ASP-Lab1-851b",
               "resourceType": "Microsoft.Web/serverfarms",
-              "resourceName": "ASP-Lab1-9db7"
-            },
-            {
-              "id": "/subscriptions/14b5605c-c72a-4f30-83b3-c8cd6668c0ba/resourceGroups/Lab1/providers/microsoft.insights/components/fhwnLab1",
-              "resourceType": "microsoft.insights/components",
-              "resourceName": "fhwnLab1",
-              "apiVersion": "2015-05-01"
+              "resourceName": "ASP-Lab1-851b"
             }
           ],
-          "id": "/subscriptions/14b5605c-c72a-4f30-83b3-c8cd6668c0ba/resourceGroups/Lab1/providers/Microsoft.Web/sites/fhwnLab1",
+          "id": "/subscriptions/14b5605c-c72a-4f30-83b3-c8cd6668c0ba/resourceGroups/Lab1/providers/Microsoft.Web/sites/fhwnMyWebApp",
           "resourceType": "Microsoft.Web/sites",
-          "resourceName": "fhwnLab1"
+          "resourceName": "fhwnMyWebApp"
         }
       ],
       "validationLevel": "Template"
