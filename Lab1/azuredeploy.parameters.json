@@ -1,19 +1,5 @@
-[
-    {
-      "id": "/subscriptions/14b5605c-c72a-4f30-83b3-c8cd6668c0ba/resourceGroups/Lab1/providers/Microsoft.Resources/deployments/Microsoft.Web-WebApp-Portal-d2cee25e-b789/operations/96BAFE43A85D55E3",
-      "operationId": "96BAFE43A85D55E3",
-      "properties": {
-        "provisioningOperation": "Create",
-        "provisioningState": "Succeeded",
-        "timestamp": "2020-10-09T09:59:18.8514629Z",
-        "duration": "PT4.3153299S",
-        "trackingId": "497e7563-3395-43d7-926b-ef1010cebe88",
-        "statusCode": "OK",
-        "targetResource": {
-          "id": "/subscriptions/14b5605c-c72a-4f30-83b3-c8cd6668c0ba/resourceGroups/Lab1/providers/Microsoft.Web/serverfarms/ASP-Lab1-851b",
-          "resourceType": "Microsoft.Web/serverfarms",
-          "resourceName": "ASP-Lab1-851b"
-        }
-      }
-    }
-  ]
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {}
+}
