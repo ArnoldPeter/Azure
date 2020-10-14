@@ -1,111 +1,113 @@
 {
-    "id": "/subscriptions/14b5605c-c72a-4f30-83b3-c8cd6668c0ba/resourceGroups/Lab1/providers/Microsoft.Resources/deployments/Microsoft.Web-WebApp-Portal-d2cee25e-b789",
-    "name": "Microsoft.Web-WebApp-Portal-d2cee25e-b789",
-    "type": "Microsoft.Resources/deployments",
-    "tags": {
-      "primaryResourceId": "/subscriptions/14b5605c-c72a-4f30-83b3-c8cd6668c0ba/resourcegroups/Lab1/providers/Microsoft.Web/sites/fhwnMyWebApp",
-      "marketplaceItemId": "Microsoft.WebSite"
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "projectName": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 11,
+      "metadata": {
+        "description": "Specify a project name that is used to generate resource names."
+      }
     },
-    "properties": {
-      "templateHash": "4883191733679320624",
-      "parameters": {
-        "<parameter-name>" : {
-            "type" : "<type-of-parameter-value>",
-            "defaultValue": "<default-value-of-parameter>",
-            "allowedValues": [ "<array-of-allowed-values>" ],
-            "metadata": {
-              "description": "<description-of-the parameter>"
-            }},
-        "subscriptionId": {
-          "type": "String",
-          "value": "14b5605c-c72a-4f30-83b3-c8cd6668c0ba"
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]",
+      "metadata": {
+        "description": "Specify a location for the resources."
+      }
+    },
+    "storageSKU": {
+      "type": "string",
+      "defaultValue": "Standard_LRS",
+      "allowedValues": [
+        "Standard_LRS",
+        "Standard_GRS",
+        "Standard_RAGRS",
+        "Standard_ZRS",
+        "Premium_LRS",
+        "Premium_ZRS",
+        "Standard_GZRS",
+        "Standard_RAGZRS"
+      ],
+      "metadata": {
+        "description": "Specify the storage account type."
+      }
+    },
+     "subscriptionId": {
+            "type": "string"
         },
         "name": {
-          "type": "String",
-          "value": "fhwnMyWebApp"
-        },
-        "location": {
-          "type": "String",
-          "value": "North Europe"
+            "type": "string"
         },
         "hostingPlanName": {
-          "type": "String",
-          "value": "ASP-Lab1-851b"
+            "type": "string"
         },
         "serverFarmResourceGroup": {
-          "type": "String",
-          "value": "Lab1"
+            "type": "string"
         },
         "alwaysOn": {
-          "type": "Bool",
-          "value": false
+            "type": "bool"
         },
         "sku": {
-          "type": "String",
-          "value": "Free"
+            "type": "string"
         },
         "skuCode": {
-          "type": "String",
-          "value": "F1"
+            "type": "string"
         },
         "workerSize": {
-          "type": "String",
-          "value": "0"
+            "type": "string"
         },
         "workerSizeId": {
-          "type": "String",
-          "value": "0"
+            "type": "string"
         },
         "numberOfWorkers": {
-          "type": "String",
-          "value": "1"
+            "type": "string"
         },
         "linuxFxVersion": {
-          "type": "String",
-          "value": "NODE|12-lts"
+            "type": "string"
         }
+  },
+  "variables": {
+    "storageAccountName": "[concat(parameters('projectName'), 'store')]",
+    "webAppName": "[concat(parameters('projectName'), 'WebApp')]",
+    "appServicePlanName": "[concat(parameters('projectName'), 'Plan')]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2019-04-01",
+      "name": "[variables('storageAccountName')]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "[parameters('storageSKU')]"
       },
-      "mode": "Incremental",
-      "debugSetting": {
-        "detailLevel": "None"
-      },
-      "provisioningState": "Running",
-      "timestamp": "2020-10-09T09:59:14.3762681Z",
-      "duration": "PT0.8150027S",
-      "correlationId": "7db4608b-a444-407c-81bb-24d5d73ec2be",
-      "providers": [
-        {
-          "namespace": "Microsoft.Web",
-          "resourceTypes": [
-            {
-              "resourceType": "sites",
-              "locations": [
-                "northeurope"
-              ]
-            },
-            {
-              "resourceType": "serverfarms",
-              "locations": [
-                "northeurope"
-              ]
-            }
-          ]
-        }
+      "kind": "StorageV2",
+      "properties": {
+        "supportsHttpsTrafficOnly": true
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites",
+      "apiVersion": "2018-11-01",
+      "name": "[variables('webAppName')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanName'))]"
       ],
-      "dependencies": [
-        {
-          "dependsOn": [
-            {
-              "id": "/subscriptions/14b5605c-c72a-4f30-83b3-c8cd6668c0ba/resourceGroups/Lab1/providers/Microsoft.Web/serverfarms/ASP-Lab1-851b",
-              "resourceType": "Microsoft.Web/serverfarms",
-              "resourceName": "ASP-Lab1-851b"
-            }
-          ],
-          "id": "/subscriptions/14b5605c-c72a-4f30-83b3-c8cd6668c0ba/resourceGroups/Lab1/providers/Microsoft.Web/sites/fhwnMyWebApp",
-          "resourceType": "Microsoft.Web/sites",
-          "resourceName": "fhwnMyWebApp"
+      "kind": "app",
+      "properties": {
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanName'))]",
+        "siteConfig": {
+          "linuxFxVersion": "[parameters('linuxFxVersion')]"
         }
-      ],
-      "validationLevel": "Template"
+      }
+    }
+  ],
+  "outputs": {
+    "storageEndpoint": {
+      "type": "object",
+      "value": "[reference(variables('storageAccountName')).primaryEndpoints]"
     }
   }
+}
